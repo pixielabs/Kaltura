@@ -3,7 +3,13 @@ module Kaltura
     extend ClientResource
 
     def self.get_by_entry_id(id)
-      fetch('flavorAsset', 'getByEntryId', {entryId: id}).first.item.map{ |item| Kaltura::FlavorAsset.new(item) }
+      result = fetch('flavorAsset', 'getByEntryId', {entryId: id}).first.item
+      
+      if result.is_a? Array
+        result.map{ |item| Kaltura::FlavorAsset.new(item) }
+      else
+        Kaltura::FlavorAsset.new result
+      end
     end
 
     def flavorParamsId
