@@ -18,6 +18,10 @@ module Kaltura
       fetch('media', 'list', options).first.objects.item.map { |item| Kaltura::MediaEntry.new(item) }
     end
 
+    def self.convert(id, conversion_profile_id)
+      fetch('media', 'convert', {entryId: id, conversionProfileId: conversion_profile_id})
+    end
+
     private
 
     def self._ks_required?

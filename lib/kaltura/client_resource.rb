@@ -18,7 +18,7 @@ module Kaltura
       options[:service] = service
       options[:action] = action
       response = HTTParty.post(url, :body => options, :format => :xml)
-      _verify!(response, 201) { raise CreateError, "Create failed, HTTP error: #{response.code}" }
+      _verify_http_code!(response, 201) { raise CreateError, "Create failed, HTTP error: #{response.code}" }
     end
 
     def url

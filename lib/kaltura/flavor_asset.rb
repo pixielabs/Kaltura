@@ -12,6 +12,10 @@ module Kaltura
       end
     end
 
+    def self.get_download_url(id)
+      fetch('flavorAsset', 'getdownloadurl', {id: id}).first.result
+    end
+
     def flavorParamsId
       self['flavorParamsId'].to_i
     end
