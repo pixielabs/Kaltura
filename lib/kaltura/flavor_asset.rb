@@ -24,6 +24,10 @@ module Kaltura
       self['flavorParamsId'].to_i
     end
 
+    def status
+      self['status'].to_i
+    end
+
     private
 
     def self._ks_required?
