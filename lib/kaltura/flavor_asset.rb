@@ -8,7 +8,7 @@ module Kaltura
       if result.is_a? Array
         result.map{ |item| Kaltura::FlavorAsset.new(item) }
       else
-        Kaltura::FlavorAsset.new result
+        [Kaltura::FlavorAsset.new(result)]
       end
     end
 
