@@ -12,6 +12,10 @@ module Kaltura
       end
     end
 
+    def self.get(id)
+      fetch('flavorAsset', 'get', {id: id}).first
+    end
+
     def self.get_download_url(id)
       fetch('flavorAsset', 'getdownloadurl', {id: id}).first.result
     end
