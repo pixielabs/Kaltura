@@ -15,7 +15,13 @@ module Kaltura
     end
 
     def self.list(options={})
-      fetch('media', 'list', options).first.objects.item.map { |item| Kaltura::MediaEntry.new(item) }
+      result = fetch('media', 'list', options).first.objects.item
+      
+      if result.is_a? Array
+        result.map { |item| Kaltura::MediaEntry.new(item) }
+      else
+        [Kaltura::MediaEntry.new(result)]
+      end
     end
 
     def self.convert(id, conversion_profile_id)
