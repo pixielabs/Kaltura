@@ -10,6 +10,10 @@ module Kaltura
       self
     end
 
+    def self.delete(id)
+      Kaltura::MediaEntry.fetch('media', 'delete', {entryId: id})
+    end
+
     def self.get(id,version=nil)
       fetch('media', 'get', {:entryId => id, :version => version}).first
     end
