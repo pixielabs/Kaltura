@@ -16,8 +16,8 @@ module Kaltura
       fetch('flavorAsset', 'get', {id: id}).first
     end
 
-    def self.get_download_url(id)
-      fetch('flavorAsset', 'getdownloadurl', {id: id}).first.result
+    def self.get_download_url(id, options={})
+      fetch('flavorAsset', 'getdownloadurl', options.merge({id: id})).first.result
     end
 
     def flavorParamsId
